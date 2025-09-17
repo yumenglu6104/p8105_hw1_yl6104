@@ -16,6 +16,7 @@ library(tidyverse)
 library(ggplot2)
 library(moderndive)
 data("early_january_weather")
+help("early_january_weather")
 ```
 
 The data contains `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns. 
@@ -52,7 +53,7 @@ temp_time_humi_plot = ggplot(data = early_january_weather, aes(x = time_hour, y 
   theme_minimal()
 
 print(temp_time_humi_plot)
-ggsave("temperature_time_humidity_scatterplot.png", plot = temp_time_humi_plot, width = 8, height = 6, dpi = 300)
+ggsave("temperature_time_humidity_scatterplot.png", plot = temp_time_humi_plot, width = 8, height = 6, dpi = 800)
 ```
 **General Trend of Temperature over Time:**
 
@@ -68,12 +69,13 @@ Under lower temperatures, humidity tends to be lower and under higher temperatur
 
 ## Problem 2
 ```{r}
-num_vec = rnorm(10) # a random sample of size 10 from a standard Normal distribution
-log_vec = num_vec > 0 # a logical vector indicating whether elements of the sample are greater than 0
-char_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j") # a character vector of length 10
-fac_vec = factor(rep(c("low", "medium", "high"), length.out = 10))# a factor vector of length 10, with 3 different factor “levels”
+set.seed(123)
 
-df = tibble(num_vec, log_vec, char_vec, fac_vec)
+df = tibble(num_vec = rnorm(10), # a random sample of size 10 from a standard Normal distribution,
+            log_vec = num_vec > 0, # a logical vector indicating whether elements of the sample are greater than 0, 
+            char_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"), # a character vector of length 10, 
+            fac_vec = factor(rep(c("low", "medium", "high"), length.out = 10))) # a factor vector of length 10, with 3 different factor “levels”
+print(df)
 ```
 ```{r, warning=FALSE}
 num_mean = mean(pull(df, var = num_vec))
