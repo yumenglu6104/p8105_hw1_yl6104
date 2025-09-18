@@ -16,6 +16,7 @@ library(tidyverse)
 library(moderndive)
 data("early_january_weather")
 help("early_january_weather")
+summary(early_january_weather)
 ```
 
 The data contains `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns. 
@@ -29,16 +30,16 @@ Variables include:
 - `month` (numeric): all values are 1 (January)  
 - `day` (numeric): day of the month, range 1–15  
 - `hour` (numeric): hour of observation, range 0–23  
-- `temp` (numeric): temperature in °F; min = 24.08, max = 57.92, mean = `r round(mean(early_january_weather$temp, na.rm = TRUE),2)` **important variable**  
+- `temp` (numeric): temperature in °F; min = 24.08, max = 57.92, mean = `r round(mean(early_january_weather$temp, na.rm = TRUE),2)` 
 - `dewp` (numeric): dew point in °F; min = 8.96, max = 53.06, mean = 28.06  
-- `humid` (numeric): relative humidity %; min = 32.86, max = 100, mean = 65.48 **important variable for plotting**  
+- `humid` (numeric): relative humidity %; min = 32.86, max = 100, mean = 65.48
 - `wind_dir` (numeric): wind direction in degrees; min = 0, max = 360  
 - `wind_speed` (numeric): wind speed and gust speed in mph; min = 0, max = 24.17  
 - `wind_gust` (numeric): wind gust speed in mph; many NAs (308)  
 - `precip` (numeric): precipitation in inches; min = 0, max = 0.19, mostly 0  
 - `pressure` (numeric): sea level pressure in millibars; min = 1011, max = 1034  
 - `visib` (numeric): visibility in miles; min = 0.12, max = 10  
-- `time_hour` (POSIXct): date and hour of the recording as a POSIXct date; range 2013-01-01 01:00:00 – 2013-01-15 23:00:00 **important for x-axis**  
+- `time_hour` (POSIXct): date and hour of the recording as a POSIXct date; range 2013-01-01 01:00:00 – 2013-01-15 23:00:00   
 
 The mean temperature is `r round(mean(early_january_weather$temp, na.rm = TRUE), 2)` °F
 
